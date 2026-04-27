@@ -169,6 +169,7 @@ git pull
 | `mode-keys` | `vi` | 복사 모드에서 vi 키 사용 |
 | `extended-keys` | `on` | Shift+Enter 등 modifier 키 조합 전달 |
 | `terminal-features` | `xterm*:extkeys` | 터미널에 extkeys 지원 명시 |
+| `set-clipboard` | `on` | OSC 52 활성 (원격 SSH에서도 로컬 클립보드 전송) |
 
 ### 세션 자동 저장/복원
 
