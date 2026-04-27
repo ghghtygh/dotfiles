@@ -158,8 +158,9 @@ git pull
 |---|---|---|
 | `default-terminal` | `tmux-256color` | 256색 터미널 |
 | 트루컬러 | `Tc` 적용 | xterm-256color, tmux-256color에 활성화 |
-| `history-limit` | `10000` | 스크롤백 라인 수 |
+| `history-limit` | `50000` | 스크롤백 라인 수 |
 | `mouse` | `on` | 마우스 휠 스크롤·pane 선택·리사이즈 활성 |
+| `default-shell` | `/bin/zsh` (있을 시) | 기본 셸을 zsh로 강제 (없으면 시스템 기본) |
 | `escape-time` | `0` | ESC 입력 지연 제거 (vim 친화적) |
 | `base-index` | `1` | 창 번호를 1부터 시작 |
 | `pane-base-index` | `1` | pane 번호를 1부터 시작 |
