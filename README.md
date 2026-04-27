@@ -94,6 +94,34 @@ tmux 안에서 **`Ctrl-a` + `Shift-i`** (대문자 I) 입력 → TPM이 `tmux.co
 
 ---
 
+## 터미널 권장 설정
+
+`mouse off` 정책이라 마우스 동작은 터미널이 직접 처리합니다. 매끄러운 사용감을 위해 터미널 쪽 설정을 잡아두세요.
+
+### iTerm2 (macOS)
+
+| 설정 | 위치 | 효과 |
+|---|---|---|
+| Copy on selection | Settings → General → Selection → "Copy to pasteboard on selection" | 드래그만 해도 자동 클립보드 복사 |
+| OSC 52 허용 | Settings → General → Selection → "Applications in terminal may access clipboard" | 원격 SSH 안 tmux의 OSC 52 동작 |
+| ⌘+클릭 링크 | (기본 활성) | 링크/파일 경로 클릭으로 열기 |
+
+### 휠 스크롤 동작
+
+| 상황 | 결과 |
+|---|---|
+| 일반 셸(zsh) 출력 보기 | iTerm 스크롤백 (휠로 그대로 위/아래) |
+| **vim/less/man** 등 alt-screen 앱 | iTerm이 휠을 `↑/↓` 키로 변환 → 앱 내부 스크롤 |
+| **tmux 자체 스크롤백**(`history-limit` 50000줄) 보기 | `Ctrl-a + [` → vi 키로 이동 → `q` 종료 |
+
+> tmux 스크롤백은 셸 화면이 tmux로 이미 지나간 출력입니다. iTerm 스크롤백과는 별개로 보존돼요.
+
+### Ghostty / WezTerm / Alacritty
+
+OSC 52, 링크 클릭, copy-on-selection이 기본 활성. 추가 설정 거의 불필요.
+
+---
+
 ## 동기화
 
 ### 변경 사항 push
@@ -164,9 +192,8 @@ tmr               # = tmux source-file ~/.tmux.conf  (또는 tmux 안에서 pref
 | 반 페이지 스크롤 | `Alt-PageUp` / `Alt-PageDown` |
 | 한 페이지 스크롤 | `PageUp` / `PageDown` |
 | 선택 영역 클립보드 복사 | `y` |
-| 마우스 드래그로 클립보드 복사 | 드래그 후 마우스 떼기 (자동) |
 
-> 클립보드 명령은 OS 자동 감지: `pbcopy`(macOS) → `wl-copy`(Wayland) → `xclip`(X11) → `clip.exe`(WSL). 해당 OS에서 명령이 설치돼 있어야 동작합니다 (Linux는 `sudo apt install xclip` 또는 `wl-clipboard`).
+> 마우스 드래그 복사는 **터미널(iTerm 등)이 처리**합니다. 키보드 복사 모드의 `y` 키만 OS 자동 감지(`pbcopy`/`wl-copy`/`xclip`/`clip.exe`)로 시스템 클립보드에 복사합니다.
 
 ### 일반 옵션
 
@@ -175,7 +202,7 @@ tmr               # = tmux source-file ~/.tmux.conf  (또는 tmux 안에서 pref
 | `default-terminal` | `tmux-256color` | 256색 터미널 |
 | 트루컬러 | `Tc` 적용 | xterm-256color, tmux-256color에 활성화 |
 | `history-limit` | `50000` | 스크롤백 라인 수 |
-| `mouse` | `on` | 마우스 휠 스크롤·pane 선택·리사이즈 활성 |
+| `mouse` | `off` | 마우스 입력은 터미널(iTerm 등)이 직접 처리 — 링크 ⌘+클릭, native 드래그 복사 가능 |
 | `default-shell` | `/bin/zsh` (있을 시) | 기본 셸을 zsh로 강제 (없으면 시스템 기본) |
 | `escape-time` | `0` | ESC 입력 지연 제거 (vim 친화적) |
 | `base-index` | `1` | 창 번호를 1부터 시작 |
