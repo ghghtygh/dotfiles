@@ -106,6 +106,15 @@ tmux 안에서 **`Ctrl-a` + `Shift-i`** (대문자 I) 입력 → TPM이 `tmux.co
 | OSC 52 허용 | Settings → General → Selection → "Applications in terminal may access clipboard" | 원격 SSH 안 tmux의 OSC 52 동작 |
 | ⌘+클릭 링크 | (기본 활성) | 링크/파일 경로 클릭으로 열기 |
 
+### 분할 화면에서 한 pane만 선택하기
+
+`mouse off` 상태에서 일반 드래그는 화면 전체에서 같은 라인 위치의 텍스트를 모두 선택합니다(옆 pane까지). 한 pane 영역만 선택하려면:
+
+| 방법 | 사용 |
+|---|---|
+| **`Option + 드래그`** (블록 선택) | 직사각형 영역만 선택 — 가장 간단 |
+| `prefix + m` 으로 mouse on 토글 | tmux가 pane별로 인식 → 평소대로 드래그 → 다시 `prefix + m` 으로 off |
+
 ### 휠 스크롤 동작
 
 | 상황 | 결과 |
@@ -180,6 +189,7 @@ tmr               # = tmux source-file ~/.tmux.conf  (또는 tmux 안에서 pref
 | pane 이동 (상) | `prefix + ↑` | `prefix + k` |
 | pane 이동 (우) | `prefix + →` | `prefix + l` |
 | conf 리로드 | (없음) | `prefix + r` |
+| 마우스 on/off 토글 | (없음) | `prefix + m` |
 
 > 분할 시 현재 pane의 작업 디렉토리를 새 pane에서도 유지합니다 (`-c "#{pane_current_path}"`).
 
