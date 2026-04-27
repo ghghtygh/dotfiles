@@ -148,9 +148,10 @@ git pull
 | 한 줄 위/아래 스크롤 | `Alt-↑` / `Alt-↓` |
 | 반 페이지 스크롤 | `Alt-PageUp` / `Alt-PageDown` |
 | 한 페이지 스크롤 | `PageUp` / `PageDown` |
-| 선택 영역 클립보드 복사 | `y` (macOS `pbcopy`로 파이프) |
+| 선택 영역 클립보드 복사 | `y` |
+| 마우스 드래그로 클립보드 복사 | 드래그 후 마우스 떼기 (자동) |
 
-> Linux/WSL에서 `y` 복사를 쓰려면 `pbcopy` 부분을 `xclip -selection clipboard` 또는 `wl-copy`로 바꿔야 합니다.
+> 클립보드 명령은 OS 자동 감지: `pbcopy`(macOS) → `wl-copy`(Wayland) → `xclip`(X11) → `clip.exe`(WSL). 해당 OS에서 명령이 설치돼 있어야 동작합니다 (Linux는 `sudo apt install xclip` 또는 `wl-clipboard`).
 
 ### 일반 옵션
 
