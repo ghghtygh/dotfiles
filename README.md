@@ -159,12 +159,14 @@ git pull
 | `default-terminal` | `tmux-256color` | 256색 터미널 |
 | 트루컬러 | `Tc` 적용 | xterm-256color, tmux-256color에 활성화 |
 | `history-limit` | `10000` | 스크롤백 라인 수 |
-| `mouse` | `off` | 마우스 모드 비활성 |
+| `mouse` | `on` | 마우스 휠 스크롤·pane 선택·리사이즈 활성 |
 | `escape-time` | `0` | ESC 입력 지연 제거 (vim 친화적) |
 | `base-index` | `1` | 창 번호를 1부터 시작 |
 | `pane-base-index` | `1` | pane 번호를 1부터 시작 |
 | `renumber-windows` | `on` | 창 닫으면 번호 자동 재정렬 |
 | `mode-keys` | `vi` | 복사 모드에서 vi 키 사용 |
+| `extended-keys` | `on` | Shift+Enter 등 modifier 키 조합 전달 |
+| `terminal-features` | `xterm*:extkeys` | 터미널에 extkeys 지원 명시 |
 
 ### 세션 자동 저장/복원
 
