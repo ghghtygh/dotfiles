@@ -6,7 +6,9 @@
 
 ```
 dotfiles/
-├── install.sh        # symlink + TPM 부트스트랩
+├── install.sh        # symlink + TPM 부트스트랩 + 셸 alias 등록
+├── shell/
+│   └── aliases.sh    # dotpull, tmr 등 alias 정의
 └── tmux/
     └── tmux.conf
 ```
@@ -106,11 +108,23 @@ git push
 ### 다른 PC에서 받기
 
 ```bash
-cd ~/dotfiles
-git pull
+dotpull           # = cd ~/dotfiles && git pull && tmux source-file ~/.tmux.conf
 ```
 
-설정 리로드는 tmux 안에서 `Ctrl-a` 후 `:source-file ~/.tmux.conf` 입력 (또는 tmux 재시작).
+또는 수동으로:
+```bash
+cd ~/dotfiles && git pull
+tmr               # = tmux source-file ~/.tmux.conf  (또는 tmux 안에서 prefix + r)
+```
+
+### 등록되는 셸 alias
+
+`install.sh` 실행 시 `~/.zshrc` / `~/.bashrc`에 alias 파일이 자동 source됩니다.
+
+| alias | 동작 |
+|---|---|
+| `dotpull` | dotfiles `git pull` 후 tmux conf 리로드 |
+| `tmr` | 현재 tmux 서버에 conf 리로드만 |
 
 ---
 
@@ -137,6 +151,7 @@ git pull
 | pane 이동 (하) | `prefix + ↓` | `prefix + j` |
 | pane 이동 (상) | `prefix + ↑` | `prefix + k` |
 | pane 이동 (우) | `prefix + →` | `prefix + l` |
+| conf 리로드 | (없음) | `prefix + r` |
 
 > 분할 시 현재 pane의 작업 디렉토리를 새 pane에서도 유지합니다 (`-c "#{pane_current_path}"`).
 

@@ -28,5 +28,27 @@ else
   echo "ok: TPM"
 fi
 
+# Source aliases.sh in shell rc files (idempotent)
+add_source_line() {
+  local rc_file="$1"
+  local source_line="source $DOTFILES_DIR/shell/aliases.sh"
+  [ -f "$rc_file" ] || return 0
+  if grep -Fxq "$source_line" "$rc_file"; then
+    echo "ok: aliases sourced in $rc_file"
+  else
+    {
+      echo ""
+      echo "# dotfiles aliases"
+      echo "$source_line"
+    } >> "$rc_file"
+    echo "added: aliases source line to $rc_file"
+  fi
+}
+
+add_source_line "$HOME/.zshrc"
+add_source_line "$HOME/.bashrc"
+
 echo
-echo "Done. Start tmux and press 'prefix + I' to install plugins."
+echo "Done."
+echo "- tmux: start tmux and press 'prefix + I' to install plugins"
+echo "- aliases: open a new shell or run 'source ~/.zshrc' (or ~/.bashrc)"
